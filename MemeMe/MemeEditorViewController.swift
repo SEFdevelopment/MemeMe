@@ -67,7 +67,7 @@ class MemeEditorViewController: UIViewController {
     }
     
     
-    // MARK: - Style text fields
+    // MARK: - Configure text fields
     func configureTextField(textField: UITextField, withText text: String) {
         
         textField.text = text
@@ -89,11 +89,9 @@ class MemeEditorViewController: UIViewController {
         textField.adjustsFontSizeToFitWidth = true
         textField.minimumFontSize = 12.0
         
+        textField.delegate = self
+        
     }
-    
-    
-    
-    
     
     
 }
@@ -121,11 +119,80 @@ extension MemeEditorViewController: UIImagePickerControllerDelegate, UINavigatio
         dismissViewControllerAnimated(true, completion: nil)
         
     }
+
+}
+
+
+extension MemeEditorViewController: UITextFieldDelegate {
     
+    // Remove the default text when starting to edit the text field
+    func textFieldDidBeginEditing(textField: UITextField) {
+        
+        switch textField.tag {
+            
+        case 100:
+            
+            if textField.text == "TOP" {
+                
+                textField.text = ""
+                
+            }
+            
+        case 200:
+            
+            if textField.text == "BOTTOM" {
+            
+                textField.text = ""
+            
+            }
+            
+        default:
+            
+            break
+        }
+        
+    }
+    
+    // Add back the default text if the text field is empty after user dismisses the keyboard
+    func textFieldDidEndEditing(textField: UITextField) {
+        
+        switch textField.tag {
+            
+        case 100:
+            
+            if textField.text == "" {
+                
+                textField.text = "TOP"
+                
+            }
+            
+        case 200:
+            
+            if textField.text == "" {
+                
+                textField.text = "BOTTOM"
+                
+            }
+            
+        default:
+            
+            break
+        }
+
+        
+    }
+    
+    // Dismiss keyboard on pressing the return key
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        
+        return true
+        
+    }
     
     
 }
-
 
 
 
