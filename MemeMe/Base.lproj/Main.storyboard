@@ -1,25 +1,110 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DxG-oj-J0y">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Meme Editor View Controller-->
+        <scene sceneID="X3M-Bs-FFD">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="O0h-M0-ydW" customClass="MemeEditorViewController" customModule="MemeMe_v1" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="wz0-N6-ePb"/>
+                        <viewControllerLayoutGuide type="bottom" id="egV-sO-l4O"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="7QL-6P-0WY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="OlZ-TB-nL9">
+                                <rect key="frame" x="180" y="175" width="240" height="250"/>
+                                <animations/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eqa-3A-age">
+                                <rect key="frame" x="192" y="195" width="216" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LXS-V2-umi">
+                                <rect key="frame" x="192" y="375" width="216" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eqa-3A-age" firstAttribute="top" secondItem="OlZ-TB-nL9" secondAttribute="top" constant="20" id="9dd-PV-K29"/>
+                            <constraint firstItem="eqa-3A-age" firstAttribute="centerX" secondItem="OlZ-TB-nL9" secondAttribute="centerX" id="ENK-vO-JGA"/>
+                            <constraint firstItem="egV-sO-l4O" firstAttribute="top" relation="greaterThanOrEqual" secondItem="OlZ-TB-nL9" secondAttribute="bottom" id="Khm-ov-mJX"/>
+                            <constraint firstItem="LXS-V2-umi" firstAttribute="width" secondItem="OlZ-TB-nL9" secondAttribute="width" multiplier="0.9" id="MgP-f5-nvR"/>
+                            <constraint firstItem="eqa-3A-age" firstAttribute="width" secondItem="OlZ-TB-nL9" secondAttribute="width" multiplier="0.9" id="P1c-EI-ZqE"/>
+                            <constraint firstItem="LXS-V2-umi" firstAttribute="bottom" secondItem="OlZ-TB-nL9" secondAttribute="bottom" constant="-20" id="P40-3d-Trq"/>
+                            <constraint firstItem="OlZ-TB-nL9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7QL-6P-0WY" secondAttribute="leading" id="aks-DS-rkK"/>
+                            <constraint firstItem="LXS-V2-umi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eqa-3A-age" secondAttribute="bottom" priority="998" constant="150" id="hCY-J9-fvM"/>
+                            <constraint firstItem="OlZ-TB-nL9" firstAttribute="centerX" secondItem="7QL-6P-0WY" secondAttribute="centerX" id="ldw-Gi-KmR"/>
+                            <constraint firstItem="LXS-V2-umi" firstAttribute="centerX" secondItem="OlZ-TB-nL9" secondAttribute="centerX" id="nVZ-3z-hZC"/>
+                            <constraint firstItem="OlZ-TB-nL9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wz0-N6-ePb" secondAttribute="bottom" id="oEG-y1-8ss"/>
+                            <constraint firstItem="OlZ-TB-nL9" firstAttribute="centerY" secondItem="7QL-6P-0WY" secondAttribute="centerY" id="u7l-IS-ts1"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OlZ-TB-nL9" secondAttribute="trailing" id="ufo-TV-Lu5"/>
+                        </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="RUP-3W-bum"/>
+                        <barButtonItem systemItem="camera" id="3BZ-Qd-Atf">
+                            <connections>
+                                <action selector="pickAnImageFromCamera:" destination="O0h-M0-ydW" id="w5m-Pv-Z4a"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="0wI-7L-gbL"/>
+                        <barButtonItem title="Album" id="VTD-bZ-L6w">
+                            <connections>
+                                <action selector="pickAnImageFromAlbum:" destination="O0h-M0-ydW" id="U6G-eS-ejB"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="tDy-5k-pEg"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="eF2-Yo-aeU">
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="PTm-3A-pE9"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bottomTextField" destination="LXS-V2-umi" id="njM-LT-BH1"/>
+                        <outlet property="cameraButton" destination="3BZ-Qd-Atf" id="oWT-It-7Gt"/>
+                        <outlet property="imageView" destination="OlZ-TB-nL9" id="o4d-1Z-mPI"/>
+                        <outlet property="topTextField" destination="eqa-3A-age" id="dI4-Cn-QH7"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WXj-YK-fkR" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1322" y="228"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Fsf-SW-EhG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="DxG-oj-J0y" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vpI-5V-fgz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="pHT-Ah-Pts">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="O0h-M0-ydW" kind="relationship" relationship="rootViewController" id="gQb-Q4-xXv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8mu-8F-CoA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="622" y="228"/>
         </scene>
     </scenes>
 </document>
