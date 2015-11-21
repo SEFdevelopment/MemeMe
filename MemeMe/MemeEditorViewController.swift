@@ -29,7 +29,9 @@ class MemeEditorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        // Configure the text fields
+        configureTextField(topTextField, withText: "TOP")
+        configureTextField(bottomTextField, withText: "BOTTOM")
         
     }
     
@@ -66,7 +68,28 @@ class MemeEditorViewController: UIViewController {
     
     
     // MARK: - Style text fields
-    
+    func configureTextField(textField: UITextField, withText text: String) {
+        
+        textField.text = text
+        
+        let memeTextAttributes = [
+        
+            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSForegroundColorAttributeName : UIColor.whiteColor(),
+            NSStrokeColorAttributeName : UIColor.blackColor(),
+            NSStrokeWidthAttributeName : -2.0,
+            
+        ]
+        
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.autocapitalizationType = .AllCharacters
+        textField.textAlignment = .Center
+        textField.backgroundColor = UIColor.clearColor()
+        textField.borderStyle = .None
+        textField.adjustsFontSizeToFitWidth = true
+        textField.minimumFontSize = 12.0
+        
+    }
     
     
     
