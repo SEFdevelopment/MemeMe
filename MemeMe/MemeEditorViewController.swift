@@ -161,6 +161,41 @@ class MemeEditorViewController: UIViewController {
     }
     
     
+    // MARK: - Meme management
+    func generateMemedImage() -> UIImage {
+        
+        // Hide toolbar and navbar
+        navigationController?.navigationBar.hidden = true
+        navigationController?.toolbar.hidden = true
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        
+        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        // Show toolbar and navbar
+        navigationController?.navigationBar.hidden = false
+        navigationController?.toolbar.hidden = false
+        
+        // Return the memedImage
+        return memedImage
+    }
+    
+    func save() {
+        
+        if let originalImage = imageView.image {
+            
+            let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: originalImage, memedImage: generateMemedImage())
+            
+            (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
+            
+        }
+        
+    }
+    
     
 }
 
