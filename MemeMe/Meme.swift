@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Meme {
+struct Meme {
     
     // MARK: - PROPERTIES
     var topText: String
