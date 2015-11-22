@@ -11,7 +11,6 @@
 		E8DE037C1C00984F00247529 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE037B1C00984F00247529 /* AppDelegate.swift */; };
 		E8DE03811C00984F00247529 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8DE037F1C00984F00247529 /* Main.storyboard */; };
 		E8DE03831C00984F00247529 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8DE03821C00984F00247529 /* Assets.xcassets */; };
-		E8DE03861C00984F00247529 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8DE03841C00984F00247529 /* LaunchScreen.storyboard */; };
 		E8DE038E1C00989800247529 /* MemeEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE038D1C00989800247529 /* MemeEditorViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -21,7 +20,6 @@
 		E8DE037B1C00984F00247529 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8DE03801C00984F00247529 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E8DE03821C00984F00247529 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E8DE03851C00984F00247529 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8DE03871C00984F00247529 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8DE038D1C00989800247529 /* MemeEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeEditorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,7 +59,6 @@
 				E889F2B61C01F07100B372FF /* Meme.swift */,
 				E8DE037F1C00984F00247529 /* Main.storyboard */,
 				E8DE03821C00984F00247529 /* Assets.xcassets */,
-				E8DE03841C00984F00247529 /* LaunchScreen.storyboard */,
 				E8DE03871C00984F00247529 /* Info.plist */,
 			);
 			path = MemeMe;
@@ -125,7 +122,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8DE03861C00984F00247529 /* LaunchScreen.storyboard in Resources */,
 				E8DE03831C00984F00247529 /* Assets.xcassets in Resources */,
 				E8DE03811C00984F00247529 /* Main.storyboard in Resources */,
 			);
@@ -153,14 +149,6 @@
 				E8DE03801C00984F00247529 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		E8DE03841C00984F00247529 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E8DE03851C00984F00247529 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -251,6 +239,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = MemeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SEFdevelopment.MemeMe;
@@ -262,6 +251,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = MemeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SEFdevelopment.MemeMe;
