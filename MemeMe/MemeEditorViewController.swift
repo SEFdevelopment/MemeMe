@@ -24,7 +24,6 @@ class MemeEditorViewController: UIViewController {
     @IBOutlet weak var bottomTextField: UITextField!
     
     
-    
     // MARK: - METHODS
     
     // MARK: - View controller life cycle
@@ -91,6 +90,26 @@ class MemeEditorViewController: UIViewController {
         
     }
     
+    @IBAction func shareMeme(sender: AnyObject) {
+        
+        let memedImage = generateMemedImage()
+        
+        let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        
+        activityViewController.completionWithItemsHandler = { _, completed, _, _ in
+            
+            if completed {
+                
+                self.saveMeme()
+                self.dismissViewControllerAnimated(true, completion: nil)
+                
+            }
+        }
+        
+        presentViewController(activityViewController, animated: true, completion: nil)
+        
+        
+    }
     
     // MARK: - Text fields configuration
     func configureTextField(textField: UITextField, withText text: String) {
@@ -193,18 +212,15 @@ class MemeEditorViewController: UIViewController {
     }
     
     
-    func save() {
+    func saveMeme() {
         
-        if let originalImage = imageView.image {
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: generateMemedImage())
             
-            let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: originalImage, memedImage: generateMemedImage())
-            
-            (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
-            
-        }
+        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
+        
+        print("Meme saved")
+
     }
-    
-    
     
     
 }

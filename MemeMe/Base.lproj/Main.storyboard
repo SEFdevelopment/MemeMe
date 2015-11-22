@@ -69,7 +69,11 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="tDy-5k-pEg"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="eF2-Yo-aeU">
-                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="PTm-3A-pE9"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="PTm-3A-pE9">
+                            <connections>
+                                <action selector="shareMeme:" destination="O0h-M0-ydW" id="ez7-zt-fRv"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bottomTextField" destination="LXS-V2-umi" id="njM-LT-BH1"/>
