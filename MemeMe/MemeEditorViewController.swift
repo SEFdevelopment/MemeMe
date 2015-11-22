@@ -217,8 +217,7 @@ class MemeEditorViewController: UIViewController {
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: generateMemedImage())
             
         (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
-        
-        print("Meme saved")
+
 
     }
     
