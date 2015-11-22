@@ -19,17 +19,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="OlZ-TB-nL9">
-                                <rect key="frame" x="180" y="185" width="240" height="230"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eqa-3A-age">
-                                <rect key="frame" x="192" y="205" width="216" height="30"/>
+                                <rect key="frame" x="30" y="89" width="540" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LXS-V2-umi">
-                                <rect key="frame" x="192" y="365" width="216" height="30"/>
+                                <rect key="frame" x="30" y="501" width="540" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -38,19 +38,16 @@
                         <animations/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eqa-3A-age" firstAttribute="top" secondItem="OlZ-TB-nL9" secondAttribute="top" constant="20" id="9dd-PV-K29"/>
+                            <constraint firstItem="egV-sO-l4O" firstAttribute="top" secondItem="LXS-V2-umi" secondAttribute="bottom" constant="25" id="AMw-8q-LnH"/>
                             <constraint firstItem="eqa-3A-age" firstAttribute="centerX" secondItem="OlZ-TB-nL9" secondAttribute="centerX" id="ENK-vO-JGA"/>
-                            <constraint firstItem="egV-sO-l4O" firstAttribute="top" relation="greaterThanOrEqual" secondItem="OlZ-TB-nL9" secondAttribute="bottom" id="Khm-ov-mJX"/>
                             <constraint firstItem="LXS-V2-umi" firstAttribute="width" secondItem="OlZ-TB-nL9" secondAttribute="width" multiplier="0.9" id="MgP-f5-nvR"/>
+                            <constraint firstItem="eqa-3A-age" firstAttribute="top" secondItem="wz0-N6-ePb" secondAttribute="bottom" constant="25" id="N5J-c9-6yL"/>
                             <constraint firstItem="eqa-3A-age" firstAttribute="width" secondItem="OlZ-TB-nL9" secondAttribute="width" multiplier="0.9" id="P1c-EI-ZqE"/>
-                            <constraint firstItem="LXS-V2-umi" firstAttribute="bottom" secondItem="OlZ-TB-nL9" secondAttribute="bottom" constant="-20" id="P40-3d-Trq"/>
-                            <constraint firstItem="OlZ-TB-nL9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7QL-6P-0WY" secondAttribute="leading" id="aks-DS-rkK"/>
-                            <constraint firstItem="LXS-V2-umi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eqa-3A-age" secondAttribute="bottom" priority="998" constant="130" id="hCY-J9-fvM"/>
-                            <constraint firstItem="OlZ-TB-nL9" firstAttribute="centerX" secondItem="7QL-6P-0WY" secondAttribute="centerX" id="ldw-Gi-KmR"/>
+                            <constraint firstItem="OlZ-TB-nL9" firstAttribute="leading" secondItem="7QL-6P-0WY" secondAttribute="leading" id="aks-DS-rkK"/>
+                            <constraint firstAttribute="bottom" secondItem="OlZ-TB-nL9" secondAttribute="bottom" id="eMn-Yv-rGJ"/>
                             <constraint firstItem="LXS-V2-umi" firstAttribute="centerX" secondItem="OlZ-TB-nL9" secondAttribute="centerX" id="nVZ-3z-hZC"/>
-                            <constraint firstItem="OlZ-TB-nL9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wz0-N6-ePb" secondAttribute="bottom" id="oEG-y1-8ss"/>
-                            <constraint firstItem="OlZ-TB-nL9" firstAttribute="centerY" secondItem="7QL-6P-0WY" secondAttribute="centerY" id="u7l-IS-ts1"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OlZ-TB-nL9" secondAttribute="trailing" id="ufo-TV-Lu5"/>
+                            <constraint firstItem="OlZ-TB-nL9" firstAttribute="top" secondItem="7QL-6P-0WY" secondAttribute="top" id="rnw-L9-ZdB"/>
+                            <constraint firstAttribute="trailing" secondItem="OlZ-TB-nL9" secondAttribute="trailing" id="ufo-TV-Lu5"/>
                         </constraints>
                     </view>
                     <toolbarItems>
