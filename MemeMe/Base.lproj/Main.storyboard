@@ -75,6 +75,7 @@
                         <outlet property="bottomTextField" destination="LXS-V2-umi" id="njM-LT-BH1"/>
                         <outlet property="cameraButton" destination="3BZ-Qd-Atf" id="oWT-It-7Gt"/>
                         <outlet property="imageView" destination="OlZ-TB-nL9" id="o4d-1Z-mPI"/>
+                        <outlet property="shareButton" destination="PTm-3A-pE9" id="K1t-LV-Puc"/>
                         <outlet property="topTextField" destination="eqa-3A-age" id="dI4-Cn-QH7"/>
                     </connections>
                 </viewController>

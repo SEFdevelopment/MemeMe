@@ -18,6 +18,7 @@ class MemeEditorViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
@@ -42,6 +43,13 @@ class MemeEditorViewController: UIViewController {
         
         // Disable camera button if camera is not available
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        
+        // Disable the share button if there is no image selected
+        if imageView.image == nil {
+            
+            shareButton.enabled = false
+            
+        }
         
         // Subscribe to keyboard notifications
         subscribeToKeyboardNotifications()
@@ -184,6 +192,7 @@ class MemeEditorViewController: UIViewController {
         return memedImage
     }
     
+    
     func save() {
         
         if let originalImage = imageView.image {
@@ -193,8 +202,9 @@ class MemeEditorViewController: UIViewController {
             (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
             
         }
-        
     }
+    
+    
     
     
 }
@@ -216,6 +226,8 @@ extension MemeEditorViewController: UIImagePickerControllerDelegate, UINavigatio
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
             imageView.image = image
+            
+            shareButton.enabled = true
             
         }
         
