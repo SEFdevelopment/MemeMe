@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E889F2B71C01F07100B372FF /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E889F2B61C01F07100B372FF /* Meme.swift */; };
 		E8DE037C1C00984F00247529 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE037B1C00984F00247529 /* AppDelegate.swift */; };
 		E8DE03811C00984F00247529 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8DE037F1C00984F00247529 /* Main.storyboard */; };
 		E8DE03831C00984F00247529 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8DE03821C00984F00247529 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E889F2B61C01F07100B372FF /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		E8DE03781C00984F00247529 /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8DE037B1C00984F00247529 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8DE03801C00984F00247529 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				E8DE037B1C00984F00247529 /* AppDelegate.swift */,
 				E8DE038D1C00989800247529 /* MemeEditorViewController.swift */,
+				E889F2B61C01F07100B372FF /* Meme.swift */,
 				E8DE037F1C00984F00247529 /* Main.storyboard */,
 				E8DE03821C00984F00247529 /* Assets.xcassets */,
 				E8DE03841C00984F00247529 /* LaunchScreen.storyboard */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E889F2B71C01F07100B372FF /* Meme.swift in Sources */,
 				E8DE037C1C00984F00247529 /* AppDelegate.swift in Sources */,
 				E8DE038E1C00989800247529 /* MemeEditorViewController.swift in Sources */,
 			);
@@ -284,6 +288,7 @@
 				E8DE038C1C00984F00247529 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
