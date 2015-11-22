@@ -128,9 +128,9 @@ extension MemeEditorViewController: UITextFieldDelegate {
     // Remove the default text when starting to edit the text field
     func textFieldDidBeginEditing(textField: UITextField) {
         
-        switch textField.tag {
+        switch textField {
             
-        case 100:
+        case topTextField:
             
             if textField.text == "TOP" {
                 
@@ -138,7 +138,7 @@ extension MemeEditorViewController: UITextFieldDelegate {
                 
             }
             
-        case 200:
+        case bottomTextField:
             
             if textField.text == "BOTTOM" {
             
@@ -156,9 +156,9 @@ extension MemeEditorViewController: UITextFieldDelegate {
     // Add back the default text if the text field is empty after user dismisses the keyboard
     func textFieldDidEndEditing(textField: UITextField) {
         
-        switch textField.tag {
+        switch textField {
             
-        case 100:
+        case topTextField:
             
             if textField.text == "" {
                 
@@ -166,7 +166,7 @@ extension MemeEditorViewController: UITextFieldDelegate {
                 
             }
             
-        case 200:
+        case bottomTextField:
             
             if textField.text == "" {
                 
