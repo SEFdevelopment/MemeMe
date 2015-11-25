@@ -20,6 +20,4 @@ class SentMemesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var memeImageView: UIImageView!
     
-    
-    
 }

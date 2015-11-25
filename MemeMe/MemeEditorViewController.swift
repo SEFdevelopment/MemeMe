@@ -2,11 +2,12 @@
 //  MemeEditorViewController.swift
 //  MemeMe
 //
-//  Created by Andrei Sadovnicov on 21/11/15.
+//  Created by Andrei Sadovnicov on 25/11/15.
 //  Copyright © 2015 Andrei Sadovnicov. All rights reserved.
 //
 
 import UIKit
+import AVFoundation
 
 
 // MARK: - CLASS
@@ -23,6 +24,16 @@ class MemeEditorViewController: UIViewController {
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     
+    @IBOutlet var textFieldsView: UIView!
+    
+    
+    // MARK: - Model
+    var indexForMemeToEdit: Int?
+    
+    
+    // MARK: - AppDelegate
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
     
     // MARK: - METHODS
     
@@ -30,9 +41,23 @@ class MemeEditorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Configure the text fields
-        configureTextField(topTextField, withText: "TOP")
-        configureTextField(bottomTextField, withText: "BOTTOM")
+        if let indexForMemeToEdit = indexForMemeToEdit {
+            
+            let memeToEdit = appDelegate.memes[indexForMemeToEdit]
+            
+            configureTextField(topTextField, withText: memeToEdit.topText)
+            configureTextField(bottomTextField, withText: memeToEdit.bottomText)
+            
+            imageView.image = memeToEdit.originalImage
+            
+        } else {
+            
+            configureTextField(topTextField, withText: "TOP")
+            configureTextField(bottomTextField, withText: "BOTTOM")
+            
+        }
+        
+        view.addSubview(textFieldsView)
         
     }
     
@@ -63,6 +88,25 @@ class MemeEditorViewController: UIViewController {
         
     }
     
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        if imageView.image != nil {
+            
+            positionTextFieldsViewForAspectFit()
+            
+            
+        } else {
+            
+            positionTextFieldsViewForNoImage()
+            
+        }
+        
+        
+    }
+    
+    
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         
         // Dismiss the keyboard on rotation
@@ -92,6 +136,10 @@ class MemeEditorViewController: UIViewController {
     
     @IBAction func shareMeme(sender: AnyObject) {
         
+        // Dismiss the keyboard on share
+        view.endEditing(true)
+        
+        // Generate, share and save the meme
         let memedImage = generateMemedImage()
         
         let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
@@ -111,13 +159,22 @@ class MemeEditorViewController: UIViewController {
         
     }
     
+    @IBAction func cancel(sender: AnyObject) {
+        
+        dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    
+    
+    
     // MARK: - Text fields configuration
     func configureTextField(textField: UITextField, withText text: String) {
         
         textField.text = text
         
         let memeTextAttributes = [
-        
+            
             NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
             NSForegroundColorAttributeName : UIColor.whiteColor(),
             NSStrokeColorAttributeName : UIColor.blackColor(),
@@ -138,6 +195,24 @@ class MemeEditorViewController: UIViewController {
     }
     
     
+    // MARK: - Text fields positioning
+    func positionTextFieldsViewForAspectFit() {
+        
+        let rectForAspectFitArea = AVMakeRectWithAspectRatioInsideRect(imageView.image!.size, imageView.frame)
+        
+        textFieldsView.frame = rectForAspectFitArea
+        
+    }
+    
+    
+    func positionTextFieldsViewForNoImage() {
+        
+        textFieldsView.frame = imageView.frame
+        
+    }
+    
+    
+    
     // MARK: - Keyboard management
     func subscribeToKeyboardNotifications() {
         
@@ -145,7 +220,7 @@ class MemeEditorViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide", name: UIKeyboardWillHideNotification, object: nil)
         
-
+        
         
     }
     
@@ -155,7 +230,7 @@ class MemeEditorViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
         
-
+        
     }
     
     
@@ -191,35 +266,47 @@ class MemeEditorViewController: UIViewController {
     // MARK: - Meme management
     func generateMemedImage() -> UIImage {
         
-        // Hide toolbar and navbar
-        navigationController?.navigationBar.hidden = true
-        navigationController?.toolbar.hidden = true
+        UIGraphicsBeginImageContext(view.bounds.size)
         
-        // Render view to an image
-        UIGraphicsBeginImageContext(view.frame.size)
+        view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
         
-        view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: true)
-        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        let viewImage = UIGraphicsGetImageFromCurrentImageContext()
         
         UIGraphicsEndImageContext()
         
-        // Show toolbar and navbar
-        navigationController?.navigationBar.hidden = false
-        navigationController?.toolbar.hidden = false
         
-        // Return the memedImage
+        
+        let rectForAspectFitArea = AVMakeRectWithAspectRatioInsideRect(imageView.image!.size, imageView.frame)
+        
+        let cgiImage = CGImageCreateWithImageInRect(viewImage.CGImage, rectForAspectFitArea)
+        
+        let memedImage = UIImage(CGImage: cgiImage!)
+        
         return memedImage
     }
     
     
     func saveMeme() {
         
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: generateMemedImage())
+        
+        if let indexForMemeToEdit = indexForMemeToEdit {
             
-        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
-
-
+            appDelegate.memes[indexForMemeToEdit] = meme
+            
+        } else {
+            
+            appDelegate.memes.append(meme)
+            
+        }
+        
+        
+        
+        
     }
+    
     
     
 }
@@ -244,12 +331,14 @@ extension MemeEditorViewController: UIImagePickerControllerDelegate, UINavigatio
             
             shareButton.enabled = true
             
+            positionTextFieldsViewForAspectFit()
+            
         }
         
         dismissViewControllerAnimated(true, completion: nil)
         
     }
-
+    
 }
 
 
@@ -271,9 +360,9 @@ extension MemeEditorViewController: UITextFieldDelegate {
         case bottomTextField:
             
             if textField.text == "BOTTOM" {
-            
+                
                 textField.text = ""
-            
+                
             }
             
         default:
@@ -308,9 +397,10 @@ extension MemeEditorViewController: UITextFieldDelegate {
             
             break
         }
-
+        
         
     }
+    
     
     // Dismiss keyboard on pressing the return key
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -320,7 +410,6 @@ extension MemeEditorViewController: UITextFieldDelegate {
         return true
         
     }
-    
     
 }
 
