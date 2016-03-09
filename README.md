@@ -10,6 +10,7 @@ Take a photo, and overlay text to meme-ify your friends. Then share on your favo
 
 ## iOS frameworks and technologies used
 * UIKit
+* Auto Layout
 * Foundation
 * AVFoundation
 
