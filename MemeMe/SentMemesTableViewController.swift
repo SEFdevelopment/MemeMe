@@ -15,7 +15,7 @@ class SentMemesTableViewController: UITableViewController {
     // MARK: - Model
     var memes: [Meme] {
         
-        return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
+        return (UIApplication.shared.delegate as! AppDelegate).memes
         
     }
     
@@ -24,11 +24,11 @@ class SentMemesTableViewController: UITableViewController {
     let memeTextAttributes = [
         
         NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)!,
-        NSForegroundColorAttributeName : UIColor.whiteColor(),
-        NSStrokeColorAttributeName : UIColor.blackColor(),
+        NSForegroundColorAttributeName : UIColor.white,
+        NSStrokeColorAttributeName : UIColor.black,
         NSStrokeWidthAttributeName : -2.0,
         
-    ]
+    ] as [String : Any]
     
     
     
@@ -42,7 +42,7 @@ class SentMemesTableViewController: UITableViewController {
     }
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         
@@ -53,21 +53,21 @@ class SentMemesTableViewController: UITableViewController {
 
 
     // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
 
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return memes.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("memeCell", forIndexPath: indexPath) as! SentMemesTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "memeCell", for: indexPath) as! SentMemesTableViewCell
 
         if memes.count > 0 {
             
@@ -88,13 +88,13 @@ class SentMemesTableViewController: UITableViewController {
     }
 
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle == .Delete {
+        if editingStyle == .delete {
             
-           (UIApplication.sharedApplication().delegate as! AppDelegate).memes.removeAtIndex(indexPath.row)
+           (UIApplication.shared.delegate as! AppDelegate).memes.remove(at: indexPath.row)
             
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
             
         }
  
@@ -102,14 +102,14 @@ class SentMemesTableViewController: UITableViewController {
     
     
     // MARK: - Table view delegate
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         
     }
     
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 90
         
@@ -117,11 +117,11 @@ class SentMemesTableViewController: UITableViewController {
     
     
     // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "fromTableToDetail" {
             
-            let memeDetailViewController = segue.destinationViewController as! MemeDetailViewController
+            let memeDetailViewController = segue.destination as! MemeDetailViewController
             
             let indexPath = tableView.indexPathForSelectedRow
             

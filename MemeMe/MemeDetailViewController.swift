@@ -16,7 +16,7 @@ class MemeDetailViewController: UIViewController {
     var memeIndex: Int!
     
     // MARK: - AppDelegate
-    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     // MARK: - @IBOutlets
     @IBOutlet weak var memeDetailImageView: UIImageView!
@@ -24,12 +24,12 @@ class MemeDetailViewController: UIViewController {
     // MARK: - METHODS
     
     // MARK: - View controller life cycle
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
         let memedImage = appDelegate.memes[memeIndex].memedImage
         
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             
             self.memeDetailImageView.image = memedImage
             
@@ -39,9 +39,9 @@ class MemeDetailViewController: UIViewController {
     
     
     // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let navigationController = segue.destinationViewController as! UINavigationController
+        let navigationController = segue.destination as! UINavigationController
         
         let memeEditorViewController = navigationController.topViewController as! MemeEditorViewController
         

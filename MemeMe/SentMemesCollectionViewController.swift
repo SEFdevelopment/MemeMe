@@ -18,7 +18,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
     // MARK: - Model
     var memes: [Meme] {
         
-        return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
+        return (UIApplication.shared.delegate as! AppDelegate).memes
         
     }
     
@@ -26,11 +26,11 @@ class SentMemesCollectionViewController: UICollectionViewController {
     let memeTextAttributes = [
         
         NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)!,
-        NSForegroundColorAttributeName : UIColor.whiteColor(),
-        NSStrokeColorAttributeName : UIColor.blackColor(),
+        NSForegroundColorAttributeName : UIColor.white,
+        NSStrokeColorAttributeName : UIColor.black,
         NSStrokeWidthAttributeName : -2.0,
         
-    ]
+    ] as [String : Any]
     
     
     // MARK: - METHODS
@@ -44,7 +44,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
     }
 
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         collectionView?.reloadData()
@@ -76,29 +76,29 @@ class SentMemesCollectionViewController: UICollectionViewController {
             
         }
         
-        flowLayout.itemSize = CGSizeMake(dimension, dimension)
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
         
     }
     
     
 
     // MARK: - UICollectionViewDataSource
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return 1
         
     }
 
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return memes.count
         
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("memeCell", forIndexPath: indexPath) as! SentMemesCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memeCell", for: indexPath) as! SentMemesCollectionViewCell
     
         if memes.count > 0 {
             
@@ -119,13 +119,13 @@ class SentMemesCollectionViewController: UICollectionViewController {
     
     
     // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
         if segue.identifier == "fromCollectionToDetail" {
             
-            let memeDetailViewController = segue.destinationViewController as! MemeDetailViewController
+            let memeDetailViewController = segue.destination as! MemeDetailViewController
             
-            let indexPath = collectionView?.indexPathsForSelectedItems()![0]
+            let indexPath = collectionView?.indexPathsForSelectedItems![0]
             
             memeDetailViewController.memeIndex = indexPath!.row
             
